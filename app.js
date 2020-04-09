@@ -6,13 +6,11 @@ var path = require('path');
 
 var app = express();
 
-//app.use(morgan('combined'));
-app.use(morgan('tiny'));
+app.use(morgan('tiny')); // switch 'tiny'->'combined' for detailed log
 
 app.get('/', (req, res) =>
 {
     res.sendFile(path.join(__dirname, 'views/index.html'));
-    //res.sendStatus(200);
 });
 
 app.listen(3000, ()=>{
