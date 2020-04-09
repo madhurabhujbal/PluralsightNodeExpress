@@ -5,8 +5,8 @@ var app = express();
 app.get('/', (req, res) =>
 {
     console.log('request received');
-    res.sendStatus(200);
-    res.write('Hello world');
+    res.send('Hello world');
+    //res.sendStatus(200);
 
 });
 
