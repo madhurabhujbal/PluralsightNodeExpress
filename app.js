@@ -1,5 +1,6 @@
 var express = require('express');
 var debug = require('debug')('app');
+var chalk = require('chalk');
 
 var app = express();
 
@@ -12,5 +13,5 @@ app.get('/', (req, res) =>
 });
 
 app.listen(3000, ()=>{
-    debug('server listening on port 3000');
+    console.log(`server listening on port ${chalk.blueBright('3000')}`);
 });
