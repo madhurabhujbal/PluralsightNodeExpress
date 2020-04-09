@@ -10,7 +10,7 @@ app.use(morgan('tiny')); // switch 'tiny'->'combined' for detailed log
 
 app.get('/', (req, res) =>
 {
-    res.sendFile(path.join(__dirname, 'views/index.html'));
+    res.sendFile(path.join(__dirname, 'views/', 'index.html'));
 });
 
 app.listen(3000, ()=>{
