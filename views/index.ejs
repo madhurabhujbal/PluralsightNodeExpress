@@ -3,8 +3,11 @@
     </head>
 
     <body>
-        <h1>
-            <%=name%>
-        </h1>
+        <h3> <%=name%> </h3>
+        <ol>
+            <% for (i=0; i<list.length; i++) { %>
+            <li> <%=list[i]%> </li>
+            <% } %>
+        </ol>
     </body>
 </html>
