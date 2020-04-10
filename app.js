@@ -6,7 +6,7 @@ var path = require('path');
 
 var app = express();
 
-app.use(express.static(path.join(__dirname, '/public'))) //express.static indicates that static files in given directory are to be referred
+app.use(express.static(path.join(__dirname, '/public/'))) //express.static indicates that static files in given directory are to be referred
 app.use(morgan('tiny')); // switch 'tiny'->'combined' for detailed log
 
 app.get('/', (req, res) =>
