@@ -21,13 +21,13 @@ const books = [{title: 'A book of simple living' , author: 'Ruskin Bond'}, {titl
 
 bookRouter.route('/')
 .get((req, res) => {
-    res.render('books', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
+    res.render('index', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
 });
 
 app.use('/books', bookRouter);
 
 app.get('/', (req, res) => {
-  res.render('index', {name: 'Madhura', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
+  res.render('index', {name: 'Home', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
 });
 
 app.get('/authors', (req, res) => {
