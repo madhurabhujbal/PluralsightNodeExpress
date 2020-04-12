@@ -16,8 +16,10 @@ e.g: app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstra
 app.set('views', __dirname + '/views/');
 app.set('view engine', 'ejs');
 
+const books = [{title: 'A book of simple living' , author: 'Ruskin Bond'}, {title: 'Chaavaa', author: 'Shivaji Sawant'}, {title: 'Batatyachi chaal', author: 'P. L. Deshpande'}];
+
 app.get('/', (req, res) => {
-  res.render('index', {name: 'Madhura', list: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}]});
+  res.render('index', {name: 'Madhura', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
 });
 
 app.listen(3000, () => {
