@@ -6,12 +6,13 @@ const books = [{title: 'A book of simple living' , author: 'Ruskin Bond'}, {titl
 
 bookRouter.route('/')
 .get((req, res) => {
-    res.render('books', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
+    res.render('bookListView', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
 });
 
 bookRouter.route('/:id')
 .get((req, res) => {
-    res.send('Displaying information of book number:' + req.params.id);
+    const id = req.params.id;
+    res.render('bookView', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], book: books[id]});
 });
 
 module.exports = bookRouter;
