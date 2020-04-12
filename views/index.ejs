@@ -24,18 +24,11 @@
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
+                <% for(let i = 0; i < list.length; i++) { %>
                 <li>
-                    <a href="#">Category</a>
+                    <a href="<%=list[i].link%>"><%= list[i].title %></a>
                 </li>
-                <li>
-                    <a href="#">Category</a>
-                </li>
-                <li>
-                    <a href="#">Category</a>
-                </li>
-                <li>
-                    <a href="#">Category</a>
-                </li>
+                <% } %>
             </ul>
             <ul class="nav navbar-right navbar-nav">
                 <li class="dropdown">

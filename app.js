@@ -17,7 +17,7 @@ app.set('views', __dirname + '/views/');
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('index', {name: 'Madhura', list: ['Apple', 'Banana']});
+  res.render('index', {name: 'Madhura', list: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}]});
 });
 
 app.listen(3000, () => {
