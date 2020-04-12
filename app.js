@@ -24,6 +24,11 @@ bookRouter.route('/')
     res.render('index', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
 });
 
+bookRouter.route('/:id')
+.get((req, res) => {
+    res.send('Displaying information of book number:' + req.params.id);
+});
+
 app.use('/books', bookRouter);
 
 app.get('/', (req, res) => {
