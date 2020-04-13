@@ -1,5 +1,5 @@
 const express = require('express');
-const {MongoClient} = require('mongodb');
+const {MongoClient, ObjectID} = require('mongodb');
 const debug = require('debug')('app:books');
 
 function router(nav) {
@@ -32,8 +32,27 @@ function router(nav) {
 
     bookRouter.route('/:id')
     .get((req, res) => {
-        const id = req.params.id;
-        res.render('bookView', {name: 'Books', nav, book: books[id]});
+        const {id} = req.params;
+        //connect
+        const url = 'mongodb://localhost:27017';
+        const dbName = 'LibraryApp';
+        const collectionName = 'books';
+        let conn;
+        (async function mongo(){
+            try{
+            conn = await MongoClient.connect(url);
+            //retrieve
+            const db = conn.db(dbName);
+            const booksCollection = await db.collection(collectionName);
+            const book = await booksCollection.findOne({'_id': new ObjectID(id)});
+            res.render('bookView', {name: 'Books', nav, book});
+        }
+        catch(err){
+            debug(err.stack);
+        }
+        //close
+        conn.close();
+    }());
     });
     return bookRouter;
 };
