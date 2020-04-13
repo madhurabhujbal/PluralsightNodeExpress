@@ -1,18 +1,21 @@
 const express = require('express');
 
-const bookRouter = express.Router();
+function router(nav) {
+    const bookRouter = express.Router();
 
-const books = [{title: 'A book of simple living' , author: 'Ruskin Bond'}, {title: 'Chaavaa', author: 'Shivaji Sawant'}, {title: 'Batatyachi chaal', author: 'P. L. Deshpande'}];
+    const books = [{title: 'A book of simple living' , author: 'Ruskin Bond'}, {title: 'Chaavaa', author: 'Shivaji Sawant'}, {title: 'Batatyachi chaal', author: 'P. L. Deshpande'}];
 
-bookRouter.route('/')
-.get((req, res) => {
-    res.render('bookListView', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], books});
-});
+    bookRouter.route('/')
+    .get((req, res) => {
+        res.render('bookListView', {name: 'Books', nav, books});
+    });
 
-bookRouter.route('/:id')
-.get((req, res) => {
-    const id = req.params.id;
-    res.render('bookView', {name: 'Books', nav: [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}], book: books[id]});
-});
+    bookRouter.route('/:id')
+    .get((req, res) => {
+        const id = req.params.id;
+        res.render('bookView', {name: 'Books', nav, book: books[id]});
+    });
+    return bookRouter;
+};
 
-module.exports = bookRouter;
+module.exports = router;
