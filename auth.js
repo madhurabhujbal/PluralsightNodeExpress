@@ -43,10 +43,16 @@ function router(nav) {
     .post(passport.authenticate('local', {
         successRedirect: '/auth/profile',
         failureRedirect: '/'
-    }))
-    ;
+    }));
 
     authRouter.route('/profile')
+    .all((req, res, next) => {
+        if (req.user) {
+            next();
+        } else {
+            res.redirect('/');
+        }
+    })
     .get((req, res) => {
         res.json(req.user);
     });
