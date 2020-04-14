@@ -4,12 +4,19 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
 
 const app = express();
 
 app.use(morgan('tiny')); // switch 'tiny'->'combined' for detailed log
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(expressSession({ secret: 'library' }));
+require('./config/passport')(app);
+
 app.use(express.static(path.join(__dirname, '/public/'))); // express.static indicates that static files in given directory are to be referred
 /*
 similar to above, specify alternate path for finding css/js files, if not found in /public folder.
@@ -19,7 +26,6 @@ e.g: app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstra
 app.set('views', __dirname + '/views/');
 app.set('view engine', 'ejs');
 
-const books = [{title: 'A book of simple living' , author: 'Ruskin Bond'}, {title: 'Chaavaa', author: 'Shivaji Sawant'}, {title: 'Batatyachi chaal', author: 'P. L. Deshpande'}];
 const nav = [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/authors'}];
 
 const bookRouterFunction = require('./books');
