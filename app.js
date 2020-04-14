@@ -31,7 +31,7 @@ const nav = [{title: 'Books', link: '/books'}, {title: 'Authors', link: '/author
 const bookRouterFunction = require('./books');
 const bookRouter = bookRouterFunction(nav);
 const adminRouter = require('./admin');
-const authRouter = require('./auth');
+const authRouter = require('./auth')(nav);
 app.use('/books', bookRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
