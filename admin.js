@@ -3,7 +3,23 @@ const {MongoClient} = require('mongodb');
 const debug = require('debug')('app:admin');
 
 const adminRouter = express.Router();
-const books = [{title: 'A book of simple living' , author: 'Ruskin Bond'}, {title: 'Chaavaa', author: 'Shivaji Sawant'}, {title: 'Batatyachi chaal', author: 'P. L. Deshpande'}];
+const books = [
+    {
+       title:"A book of simple living",
+       author:"Ruskin Bond",
+       bookId:24838407
+    },
+    {
+       "title":"Chaavaa",
+       "author":"Shivaji Sawant",
+       "bookId":11980343
+    },
+    {
+       "title":"मधुशाला",
+       "author":"हरिवंश राय बच्चन",
+       "bookId":792429
+    }
+ ];
 
 adminRouter.route('/').
 get((req, res) => {
